@@ -14,5 +14,25 @@
   <div id="result"></div>
 
   <script src="script.js"></script>
+  <div id="fileList"></div>
+
+<script>
+async function loadFiles() {
+    const res = await fetch("https://netlifile2.onrender.com/files");
+    const files = await res.json();
+
+    const listDiv = document.getElementById("fileList");
+    listDiv.innerHTML = "";
+
+    files.forEach(file => {
+        const el = document.createElement("div");
+        el.innerHTML = `<a href="${file.url}" target="_blank">${file.filename}</a><br><img src="${file.url}" width="200">`;
+        listDiv.appendChild(el);
+    });
+}
+
+loadFiles();
+</script>
+
 </body>
 </html>
