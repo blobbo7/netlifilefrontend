@@ -2,37 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>File Upload</title>
+  <title>netlifile</title>
 </head>
 <body>
   <h1>Upload a File</h1>
   <form id="uploadForm" enctype="multipart/form-data" method="post" action="https://netlifile2.onrender.com/upload">
     <input type="file" name="file" required />
-    <button type="submit">Upload</button>
+    <button id="uploader" type="submit">Upload</button>
   </form>
 
   <div id="result"></div>
 
   <script src="script.js"></script>
-  <div id="fileList"></div>
-
-<script>
-async function loadFiles() {
-    const res = await fetch("https://netlifile2.onrender.com/files");
-    const files = await res.json();
-
-    const listDiv = document.getElementById("fileList");
-    listDiv.innerHTML = "";
-
-    files.forEach(file => {
-        const el = document.createElement("div");
-        el.innerHTML = `<a href="${file.url}" target="_blank">${file.filename}</a><br><img src="${file.url}" width="200">`;
-        listDiv.appendChild(el);
-    });
-}
-
-loadFiles();
-</script>
-
 </body>
 </html>
